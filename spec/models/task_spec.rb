@@ -9,7 +9,7 @@ RSpec.describe Task, type: :model do
     end
 
     it 'is invalid without title' do
-      task_without_title = build(:task, title: "")
+      task_without_title = build(:task, title: nil)
       expect(task_without_title).to be_invalid
       expect(task_without_title.errors[:title]).to eq ["can't be blank"]
     end
