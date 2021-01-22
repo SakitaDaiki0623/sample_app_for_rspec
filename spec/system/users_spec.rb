@@ -75,8 +75,8 @@ RSpec.describe 'Users', type: :system do
     describe 'edit task page' do
       context 'when accesses to edit task page' do
         before do
-          user_task = create(:task, title: 'test_title', status: :doing, user: user)
-          visit edit_task_path(user_task)
+          task = create(:task, title: 'test_title', status: :doing, user: user)
+          visit edit_task_path(task)
         end
         it 'fails to access' do
           expect(page).to have_content 'Login required'
