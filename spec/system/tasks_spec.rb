@@ -138,7 +138,7 @@ RSpec.describe 'Tasks', type: :system do
           fill_in 'Title', with: nil
           click_button 'Update Task'
         end
-        it 'title of task is displayed' do
+        it 'fails to be updated' do
           expect(page).to have_content '1 error prohibited this task from being saved'
           expect(page).to have_content "Title can't be blank"
           expect(current_path).to eq task_path(task)
@@ -150,7 +150,7 @@ RSpec.describe 'Tasks', type: :system do
           fill_in 'Title', with: other_task.title
           click_button 'Update Task'
         end
-        it 'title of task is displayed' do
+        it 'fails to be updated' do
           expect(page).to have_content '1 error prohibited this task from being saved'
           expect(page).to have_content 'Title has already been taken'
           expect(current_path).to eq task_path(task)
@@ -197,7 +197,7 @@ RSpec.describe 'Tasks', type: :system do
     end
     context 'when other_user accesses to task edit page' do
       before { visit edit_task_path(task) }
-      it 'title of task is displayed' do
+      it 'fails to access' do
         expect(page).to have_content 'Forbidden access.'
         expect(current_path).to eq root_path
       end
