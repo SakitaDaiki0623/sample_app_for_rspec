@@ -290,7 +290,6 @@ DEPENDENCIES
   rspec-rails (~> 4.0.2)
   rubocop
   sass-rails (~> 5.0)
-  selenium-webdriver
   sorcery
   spring
   spring-watcher-listen (~> 2.0.0)
