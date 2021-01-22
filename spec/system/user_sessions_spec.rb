@@ -6,9 +6,7 @@ RSpec.describe 'UserSessions', type: :system do
   let(:user) { create(:user) }
 
   describe 'before login' do
-    before do
-      visit login_path
-    end
+    before { visit login_path }
     context 'when input values in the form are all valid' do
       before do
         fill_in 'Email', with: user.email
@@ -22,22 +20,21 @@ RSpec.describe 'UserSessions', type: :system do
     end
     context 'when no value is entered in the form' do
       before do
+        fill_in 'Email', with: ''
+        fill_in 'Password', with: 'password'
         click_button 'Login'
       end
       it 'falis to login' do
         expect(page).to have_content 'Login failed'
+        expect(current_path).to eq login_path
       end
     end
   end
   
   describe 'after user login' do
-    before do
-      sign_in_as(user)
-    end
+    before { sign_in_as(user) }
     context 'when an user clicks the link to log out' do
-      before do
-        click_link 'Logout'
-      end
+      before { click_link 'Logout' }
       it 'logged out successfully' do
         expect(page).to have_content 'Logged out'
         expect(current_path).to eq root_path
