@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe 'UserSessions', type: :system do
-  include LoginSupport
 
   let(:user) { create(:user) }
 

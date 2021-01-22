@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe 'Tasks', type: :system do
-  include LoginSupport
 
   let(:user) { create(:user, email: 'user@example.com') }
   let(:other_user) { create(:user, email: 'other_user@example.com') }
